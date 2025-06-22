@@ -22,7 +22,7 @@ public abstract class CreativeModInventoryScreenMixin extends EffectRenderingInv
         InventoryScreenHooks.init(this, this.leftPos, this.topPos);
     }
 
-    @Inject(method = "render", at = @At("RETURN"))
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/inventory/CreativeModeInventoryScreen;renderBackground(Lnet/minecraft/client/gui/GuiGraphics;)V",shift = At.Shift.AFTER))
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         InventoryScreenHooks.render(guiGraphics,this.leftPos,this.topPos, mouseX, mouseY, partialTick,true, ci);
     }

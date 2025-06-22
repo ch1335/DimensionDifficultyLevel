@@ -1,3 +1,5 @@
 {
-  "ddl.dimension.difficult": "维度等级"
+  "ddl.dimension.difficult": "维度等级",
+  "ddl.dimension.minecraft.overworld": "主世界",
+  "ddl.menu.button.CookbookMenu": "技能"
 }

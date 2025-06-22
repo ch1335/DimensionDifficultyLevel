@@ -58,11 +58,13 @@ public class DimensionDifficultyLevel {
     }
 
     public void clientSetup(FMLClientSetupEvent event) {
-        ICommonInventoryScreen.AddButton(1, new MenuButton(1, ResourceLocation.withDefaultNamespace("eeeee"), (pButton -> {
+        ICommonInventoryScreen.AddButton(1, new MenuButton(1, ResourceLocation.withDefaultNamespace("eeeee"),Component.translatable("ddl.menu.button.CookbookMenu"), (pButton -> {
             CookbookMenu cookbookMenu = MenuRegistry.COOKBOOK.get().create(0, Minecraft.getInstance().player.getInventory());
             Minecraft.getInstance().player.containerMenu = cookbookMenu;
             Minecraft.getInstance().setScreen(new CookbookScreen(cookbookMenu, Minecraft.getInstance().player.getInventory(), Component.empty()));
         })));
+
+
     }
 
     public static MinecraftServer getMinecraftServer() {
