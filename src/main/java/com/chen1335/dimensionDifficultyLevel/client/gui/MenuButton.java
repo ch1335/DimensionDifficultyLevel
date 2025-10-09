@@ -16,6 +16,7 @@ public class MenuButton extends ImageButton {
     private final Component hoverName;
     private final int id;
 
+    //按钮id，按钮图片位置，按钮悬停名，按钮点击行为
     public MenuButton(int id, ResourceLocation pResourceLocation,Component hoverName, Button.OnPress pOnPress) {
         super(0, 0, 24, 24, 0, 0, 24, MENU_BUTTON_BACK, 24, 48, pOnPress);
         this.id = id;

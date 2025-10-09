@@ -1,18 +1,12 @@
 package com.chen1335.dimensionDifficultyLevel;
 
 import com.chen1335.dimensionDifficultyLevel.API.objects.mobModifierFunctions.ModifyHealth;
-import com.chen1335.dimensionDifficultyLevel.client.gui.MenuButton;
+import com.chen1335.dimensionDifficultyLevel.client.DimensionDifficultyLevelClient;
 import com.chen1335.dimensionDifficultyLevel.common.LevelMobModifierRegisterHolder;
 import com.chen1335.dimensionDifficultyLevel.common.mobModifier.MobModifierHandler;
-import com.chen1335.dimensionDifficultyLevel.hooks.ICommonInventoryScreen;
 import com.chen1335.dimensionDifficultyLevel.network.ModMessages;
 import com.mojang.logging.LogUtils;
-import com.soy.soycheese.client.gui.CookbookScreen;
-import com.soy.soycheese.inventory.CookbookMenu;
-import com.soy.soycheese.registries.MenuRegistry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -58,13 +52,7 @@ public class DimensionDifficultyLevel {
     }
 
     public void clientSetup(FMLClientSetupEvent event) {
-        ICommonInventoryScreen.AddButton(1, new MenuButton(1, ResourceLocation.withDefaultNamespace("eeeee"),Component.translatable("ddl.menu.button.CookbookMenu"), (pButton -> {
-            CookbookMenu cookbookMenu = MenuRegistry.COOKBOOK.get().create(0, Minecraft.getInstance().player.getInventory());
-            Minecraft.getInstance().player.containerMenu = cookbookMenu;
-            Minecraft.getInstance().setScreen(new CookbookScreen(cookbookMenu, Minecraft.getInstance().player.getInventory(), Component.empty()));
-        })));
-
-
+        DimensionDifficultyLevelClient.init();
     }
 
     public static MinecraftServer getMinecraftServer() {

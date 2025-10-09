@@ -1,8 +1,8 @@
 package com.chen1335.dimensionDifficultyLevel.network.pack;
 
 import com.chen1335.dimensionDifficultyLevel.API.Capabilities;
+import com.chen1335.dimensionDifficultyLevel.client.DimensionDifficultyLevelClient;
 import com.chen1335.dimensionDifficultyLevel.network.AbstractModPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
@@ -28,7 +28,6 @@ public class DifficultyInfoPack extends AbstractModPacket {
     }
 
 
-
     @Override
     public void write(FriendlyByteBuf buffer) {
         buffer.writeInt(currentDifficulty);
@@ -38,7 +37,7 @@ public class DifficultyInfoPack extends AbstractModPacket {
 
     @Override
     public void handel(Supplier<NetworkEvent.Context> supplier) {
-        Player player = Minecraft.getInstance().player;
+        Player player = DimensionDifficultyLevelClient.getPlayer();
         if (player != null) {
             player.getCapability(Capabilities.PLAYER_STATUE).ifPresent(playerStatue -> {
                 playerStatue.setCurrentDifficulty(currentDifficulty);
